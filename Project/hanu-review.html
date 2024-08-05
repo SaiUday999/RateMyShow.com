@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image with Rating, Filter Icon, and Rounded Rectangle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+    }
+
+    .container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url("https://firebasestorage.googleapis.com/v0/b/dtm-2dd23.appspot.com/o/Movie%20Trailers%2FSubject.png?alt=media&token=1a93768e-6e6b-4a9e-aef8-ede96e782d8b");
+      background-size: 40%;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.9;
+      height: 400vh;
+    }
+
+    .container:after {
+      content: "";
+      background-image: inherit;
+      opacity: inherit;
+      background-size: inherit;
+      background-repeat: inherit;
+      background-position: inherit;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    .container:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      z-index: -1;
+    }
+
+
+    .img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .rating-box {
+      background-color: #E5B80B;
+      color: #000;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .hanuman-box {
+      background-color: greenyellow;
+      color: darkblue;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .star-icon {
+      fill: red;
+      width: 44px;
+      height: 44px;
+    }
+
+    .movie-rating {
+      margin-left: 10px;
+    }
+
+    .filter-box {
+      position: relative;
+    }
+
+    #filter-icon {
+      position: absolute;
+      right: -600px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .filter-options {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: -600px;
+      background-color: lightblue;
+      border: 1px solid #ccc;
+      padding: 10px;
+      display: none;
+    }
+
+    .filter-options.show {
+      display: block;
+    }
+
+    .rounded-rectangle {
+      background-color: #2a3f4d;
+      color: #FFF;
+      padding: 200px 300px;
+      border-radius: 20px;
+      margin-right: 600px;
+      position: relative;
+    }
+
+    .user-icon {
+      color: rgb(3, 251, 11);
+      font-size: 58px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .username {
+      font-size: 20px;
+      position: absolute;
+      top: 30px;
+      left: 80px;
+      color: white;
+    }
+
+    .review-text {
+      position: absolute;
+      top: 80px;
+      left: 40px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .video-player {
+      position: absolute;
+      bottom: 130px;
+      left: 100px;
+      width: 200px;
+      height: auto;
+    }
+
+    .audio-player {
+      position: absolute;
+      bottom: 80px;
+      left: 100px;
+      width: 300px;
+      height: auto;
+    }
+
+    .useful-box,
+    .useless-box {
+      position: absolute;
+      bottom: 10px;
+      width: 100px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #000;
+      transition: background-color 0.3s ease;
+    }
+
+    .useful-box {
+      left: 40px;
+    }
+
+    .useless-box {
+      right: 40px;
+    }
+
+    .useful-box.clicked {
+      background-color: rgba(0, 253, 0, 0.854);
+    }
+
+    .useless-box.clicked {
+      background-color: rgba(251, 70, 70, 0.854);
+    }
+
+    .rating {
+      position: absolute;
+      display: block;
+      text-align: right;
+      margin-top: -165px;
+      right: 30px;
+      color: white;
+    }
+
+    .rating i {
+      color: red;
+    }
+
+    .home-button {
+      position: fixed;
+      bottom: 20px;
+      left: 55%;
+      transform: translateX(-50%);
+    }
+
+    .home-button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: darkorange;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<!-- Body Tag-->
+<body>
+  <div class="container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyXZWeoY8th69XlFCFrxQCHx4lSVK8sTvMCp67sZHVKw&s"
+      alt="Company Logo">
+      <span class="hanuman-box"><b>***Hanuman***</b></span>
+    <div class="rating-box">
+      <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="red" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+      </svg>
+      <span class="movie-rating"><b>9.4/10</b></span>
+    </div>
+    <div class="filter-box">
+      <i class="fas fa-filter" id="filter-icon" style="color: rgb(37, 37, 235); font-size: 64px;"></i>
+      <div class="filter-options">
+        <label><input type="radio" name="filter" value="all" checked><b> ALL</b></label>
+        <label><input type="radio" name="filter" value="good"><b> GOOD</b></label>
+        <label><input type="radio" name="filter" value="neutral"><b> NEUTRAL</b></label>
+        <label><input type="radio" name="filter" value="bad"><b> BAD</b></label>
+      </div>
+    </div><br><br>
+
+    <!-- User Data Display -->
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>saiudaykumar333</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 9/10</span>
+      <p class="review-text">The movie was Excellent and the direction department is amazing,<br> the visual effects of
+        the movie were nice to watch.</p>
+      <audio class="audio-player" controls>
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/dtm-2dd23.appspot.com/o/USER%20Storage%2FAUDIO-2024-04-30-12-16-48.m4a?alt=media&token=1a669d58-56c6-4258-be4e-81ece0f9f998"
+          type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>naughtykoustubh</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 10/10</span>
+      <p class="review-text">The Movie was Nice to watch.</p>
+      <video class="video-player" controls>
+        <source src="https://firebasestorage.googleapis.com/v0/b/dtm-2dd23.appspot.com/o/USER%20Storage%2FVIDEO-2024-04-30-12-14-16.mp4?alt=media&token=2b0be07c-f922-4f33-b18e-6a8eeccacae8" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Useful box -->
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>kkavyaroyal</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 6/10</span>
+      <p class="review-text">The Movie was nice but the graphics are okok.</p>
+      <audio class="audio-player" controls>
+        <source src="https://firebasestorage.googleapis.com/v0/b/dtm-2dd23.appspot.com/o/USER%20Storage%2FAUDIO-2024-04-30-11-39-46.m4a?alt=media&token=3144a766-6562-48e0-acd0-bbc8a920278a" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <!--Useful box-->
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>sadananda2904</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 8/10</span>
+      <p class="review-text">Movie was Excellent and must watch.</p>
+      <video class="video-player" controls>
+        <source src="video_source_url_3" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <audio class="audio-player" controls>
+        <source src="audio_source_url_3" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>velugucharan7</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 5/10</span>
+      <p class="review-text">Nice movie the story line was super.</p>
+      <video class="video-player" controls>
+        <source src="video_source_url_4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <audio class="audio-player" controls>
+        <source src="audio_source_url_4" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>yellativikas</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 10/10</span>
+      <p class="review-text">The representation of movie was Excellent.</p>
+      <video class="video-player" controls>
+        <source src="video_source_url_5" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <audio class="audio-player" controls>
+        <source src="audio_source_url_5" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="rounded-rectangle">
+      <i class="fas fa-user-circle user-icon"></i>
+      <span class="username"><b>hustlerkrishna18</b></span>
+      <span class="rating"><i class="fas fa-star"></i> 4/10</span>
+      <p class="review-text">Feeel good movie and direction department is out-performance.</p>
+      <video class="video-player" controls>
+        <source src="video_source_url_6" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <audio class="audio-player" controls>
+        <source src="audio_source_url_6" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <div class="useful-box">
+        <b>Useful 👍🏻</b>
+      </div>
+      <!-- Useless box -->
+      <div class="useless-box">
+        <b>Useless 👎🏻</b>
+      </div>
+    </div><br>
+
+    <div class="home-button">
+      <a href="myshow1.html"><b>Home</b></a>
+    </div>
+
+    <!-- JavaScript Code -->
+    <script>
+      const roundedRectangles = document.querySelectorAll('.rounded-rectangle');
+
+      roundedRectangles.forEach(function (roundedRectangle) {
+        const usefulBox = roundedRectangle.querySelector('.useful-box');
+        const uselessBox = roundedRectangle.querySelector('.useless-box');
+
+        usefulBox.addEventListener('click', function () {
+          if (!usefulBox.classList.contains('clicked')) {
+            usefulBox.classList.add('clicked');
+            uselessBox.classList.remove('clicked');
+          }
+        });
+
+        uselessBox.addEventListener('click', function () {
+          if (!uselessBox.classList.contains('clicked')) {
+            uselessBox.classList.add('clicked');
+            usefulBox.classList.remove('clicked');
+          }
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const filterIcon = document.getElementById('filter-icon');
+        const filterOptions = document.querySelector('.filter-options');
+        const roundedRectangles = document.querySelectorAll('.rounded-rectangle');
+
+        filterIcon.addEventListener('click', function () {
+          filterOptions.classList.toggle('show');
+        });
+
+        const filterRadioInputs = document.querySelectorAll('input[name="filter"]');
+        filterRadioInputs.forEach(function (input) {
+          input.addEventListener('change', function () {
+            const selectedOption = input.value;
+
+            roundedRectangles.forEach(function (rectangle) {
+              const ratingText = rectangle.querySelector('.rating').textContent;
+              const rating = parseInt(ratingText.split('/')[0].trim());
+
+              if (selectedOption === 'all' ||
+                (selectedOption === 'good' && rating >= 8) ||
+                (selectedOption === 'neutral' && rating >= 5 && rating <= 7) ||
+                (selectedOption === 'bad' && rating >= 1 && rating <= 4)) {
+                rectangle.style.display = 'block';
+              } else {
+                rectangle.style.display = 'none';
+              }
+            });
+
+            filterOptions.classList.remove('show');
+          });
+        });
+      });
+    </script>
+</body>
+</html>

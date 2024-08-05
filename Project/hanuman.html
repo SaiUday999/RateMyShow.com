@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded YouTube Video with Autoplay</title>
+    <style>
+        body {
+            background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu-bar {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-bar div {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        .language-box {
+            background-color: #FFF;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .runtime-box {
+            background-color: #92FEF6;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .rating-box {
+            background-color: #FFF;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .movie-rating {
+            margin-left: 5px;
+        }
+
+        .star-icon {
+            width: 34px;
+            /* Set the width of the star */
+            height: 34px;
+            /* Set the height of the star */
+            vertical-align: middle;
+            /* Align the star vertically */
+        }
+
+        /* Style for the share box */
+        .share-box {
+            background-color: #7AC3FC;
+            /* Blue color */
+            padding: 3px 6px;
+            /* Add padding for the share box */
+            border-radius: 5px;
+            /* Add rounded corners */
+            font-size: 20px;
+            /* Increase font size for the share box */
+            display: flex;
+            /* Use flexbox */
+            align-items: center;
+            /* Center items vertically */
+        }
+
+        .movie-share {
+            margin-left: 5px;
+            /* Add margin to the left side of the share */
+        }
+
+        .share-icon {
+            width: 24px;
+            /* Set the width of the star */
+            height: 24px;
+            /* Set the height of the star */
+            vertical-align: middle;
+            /* Align the star vertically */
+        }
+
+        /* Style for the Rate Now button container */
+        .rate-now-container {
+            display: flex;
+            /* Use flexbox */
+            justify-content: center;
+            /* Center items horizontally */
+            margin-top: 20px;
+            /* Add margin to the top */
+        }
+
+        /* Style for the Rate Now button */
+        .rate-now-button {
+            background-color: #FF4040;
+            /* Red color */
+            color: #FFF;
+            /* White text color */
+            padding: 10px 20px;
+            /* Add padding for the button */
+            border-radius: 5px;
+            /* Add rounded corners */
+            font-size: 18px;
+            /* Increase font size for the button */
+            cursor: pointer;
+            /* Change cursor to pointer */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Embedding the YouTube video with autoplay -->
+    <div style="text-align: center;">
+        <video width="1360" height="650"
+            src="https://firebasestorage.googleapis.com/v0/b/dtm-2dd23.appspot.com/o/Movie%20Trailers%2FHanuMan%20Official%20Trailer%20-%20Telugu%20%7C%20Prasanth%20Varma%20%7C%20Teja%20Sajja%20%7C%20Primeshow%20Entertainment.mp4?alt=media&token=d80d59bd-81c7-442c-8e52-cde78ea27561"
+            autoplay unmuted playsinline controls>
+        </video>
+    </div>
+
+    <!-- Menu bar -->
+    <div class="menu-bar">
+        <!-- Language box -->
+        <div class="language-box"><b>Telugu, Tamil, Kannada, Hindi, Malayalam</b></div>
+        <!-- Runtime box -->
+        <div class="runtime-box"><b>2h 38m • Action, Adventure, Fantasy • U/A</b></div>
+        <!-- Rating box -->
+        <div class="rating-box">
+            <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="red"
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+            <span class="movie-rating"><b>9.4/10</b></span>
+        </div>
+        <!-- Share Box -->
+        <div class="share-box">
+            <a href="sms:?body=http://127.0.0.1:5500/hanuman.html" style="text-decoration: none; color: inherit;">
+                <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 23" width="24" height="24">
+                    <path fill="#7A95FC" d="M20 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5"></path>
+                    <polyline fill="none" stroke="#000" stroke-miterlimit="10" points="12 19 12 14 17 17 12 10 7 17 12 14"></polyline>
+                </svg>
+                <span class="movie-share"><b>Share</b></span>
+            </a>
+        </div>
+    </div>
+
+    <big>
+        <h1>&nbsp&nbsp&nbsp&nbspAbout the movie</h1>
+    </big>
+    <p><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHanumanthu gets the powers of Hanuman in a distant village and fights
+            for Anjanadri.</b></p>
+
+    <!-- Rate Now Button Container -->
+    <div class="rate-now-container">
+        <!-- Rate Now Button -->
+        <a href="hanu-rate.html" style="text-decoration: none; color: inherit;"><button class="rate-now-button"><b>Rate
+                    Now</b></button>
+    </div>
+    </a>
+</body>
+</html>

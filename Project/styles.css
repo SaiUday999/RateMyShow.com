@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  height: 100px;
+  width: auto;
+}
+
+.search-location {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.search-location input[type="text"] {
+  width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.search-location select {
+  width: 20%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+}
+
+.sign-in button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  background-color: #fff;
+  color: #ff0000;
+  font-size: 18px;
+}
+
+.image-carousel {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 20px;
+}
+
+.image-carousel img {
+  display: inline-block;
+  width: 1480px;
+  height: 500px;
+  object-fit: cover;
+  vertical-align: top;
+}
+
+.movie-boxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.movie-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movie-box img {
+  width: 250px;
+  height: 380px;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+.movie-box p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.recommended-heading {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.customer-support {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+}

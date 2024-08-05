@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Center Movie Box</title>
+  <style>
+    /* Custom styling for the rating bar */
+    .rating-bar-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .rating-bar {
+      position: relative;
+      width: 60%;
+      height: 30px;
+      background-color: black;
+      /* Set background color to black */
+      border-radius: 10px;
+      overflow: hidden;
+      /* Ensure that indicator stays within the rating bar */
+      display: flex;
+    }
+
+    .rating-bar .number-box {
+      flex: 1;
+      /* Equal width for each number box */
+      text-align: center;
+      position: relative;
+      color: white;
+      /* Set number color to white */
+      cursor: pointer;
+      /* Change cursor to pointer */
+      line-height: 30px;
+      /* Center the number vertically */
+      user-select: none;
+      /* Prevent text selection */
+    }
+
+    .rating-bar .filled {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #EA4D72;
+      /* Set filled color */
+      transition: width 0.5s ease;
+      /* Add transition effect */
+    }
+
+    .rating-info {
+      margin-left: 10px;
+      font-size: 20px;
+      color: black;
+      /* Set number color to black */
+      font-weight: bold;
+    }
+
+    .star-icon {
+      color: red;
+      margin-right: -6px;
+      margin-left: 10px;
+      font-size: 30px;
+      /* Increase the size of the star icon */
+    }
+
+    /* Basic styling */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feedback-form {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      width: 800px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      /* Add margin to create space between form and buttons */
+    }
+
+    #feedback-text {
+      width: 100%;
+      height: 50px;
+      /* Adjusted height for better visibility */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      resize: none;
+    }
+
+    .char-count {
+      margin-top: 5px;
+      font-size: 14px;
+      color: green;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .button-row>div {
+      margin: 0 5px;
+    }
+
+    .button-row>div img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .submit-button {
+      background-color: red;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .submit-button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+
+<body style="margin: 0;">
+
+  <!-- Menu bar -->
+  <div style="background-color: white; padding: 10px; text-align: center;">
+    <h1 style="color: black;">Movie Review</h1>
+  </div>
+
+  <!-- Movie box -->
+  <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+    <div class="movie-boxes"
+      style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; margin-top: 30px;">
+      <div class="movie-box" style="text-align: center; margin-bottom: 80px;">
+        <img src="https://im.rediff.com/movies/2023/may/08lal-salaam1.jpg?w=670&h=900" alt="Lal Salaam"
+          style="width: 250px; height: 380px; border: 1px solid #333; border-radius: 10px;">
+        <p style="margin-top: 10px; font-size: 30px; color: #333; font-weight: bold;">Lal Salaam</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text below the movie box -->
+  <div style="text-align: left; color: red; font-size: 28px; margin-bottom: 20px; margin-top: -60px;">
+    <b>&nbsp&nbsp&nbsp&nbsp&nbspHow would you rate the movie?</b>
+  </div>
+
+  <!-- Rating bar container -->
+  <div class="rating-bar-container">
+
+
+    <!-- Rating bar -->
+    <div class="rating-bar" id="ratingBar">
+      <div class="filled" style="width: 0;"></div>
+      <div class="number-box" data-value="1">1</div>
+      <div class="number-box" data-value="2">2</div>
+      <div class="number-box" data-value="3">3</div>
+      <div class="number-box" data-value="4">4</div>
+      <div class="number-box" data-value="5">5</div>
+      <div class="number-box" data-value="6">6</div>
+      <div class="number-box" data-value="7">7</div>
+      <div class="number-box" data-value="8">8</div>
+      <div class="number-box" data-value="9">9</div>
+      <div class="number-box" data-value="10">10</div>
+    </div>
+    <!-- Star icon -->
+    <span class="star-icon">★</span>
+    <!-- Rating info -->
+    <div class="rating-info" id="ratingInfo"></div>
+  </div>
+
+  <!-- Heading for expressing more -->
+  <div style="text-align: left; color: blue; font-size: 28px; margin-bottom: 20px; margin-top: 40px;">
+    <b>&nbsp&nbsp&nbsp&nbsp&nbspExpress more & write a review......</b>
+  </div>
+
+  <!-- Chat form -->
+  <div class="container">
+    <div class="feedback-form">
+      <textarea id="feedback-text" placeholder="Describe your experience..." maxlength="300"></textarea>
+      <div class="char-count">
+        Characters left: 300
+      </div>
+      <div class="button-row">
+        <div class="camera-icon">
+          <img src="images/icons8-camera-94.png" alt="Camera">
+        </div>
+        <div class="voice-icon">
+          <img src="images/icons8-microphone-48.png" alt="Voice">
+        </div>
+        <button id="submit-button" class="submit-button">Submit</button>
+        <script>
+          document.getElementById('submit-button').addEventListener('click', function () {
+            window.location.href = 'lal-review.html';
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const feedbackTextarea = document.getElementById('feedback-text');
+      const charCountElement = document.querySelector('.char-count');
+
+      feedbackTextarea.addEventListener('input', function () {
+        const maxLength = parseInt(feedbackTextarea.getAttribute('maxlength'));
+        const currentLength = feedbackTextarea.value.length;
+        const charactersLeft = maxLength - currentLength;
+        charCountElement.textContent = `Characters left: ${charactersLeft}`;
+      });
+
+      const ratingNumberBoxes = document.querySelectorAll('.number-box');
+      ratingNumberBoxes.forEach(box => {
+        box.addEventListener('click', function () {
+          const ratingValue = parseInt(this.getAttribute('data-value'));
+          updateRatingBar(ratingValue);
+        });
+      });
+
+      function updateRatingBar(rating) {
+        const filled = document.querySelector('.rating-bar .filled');
+        const width = rating * 10 + '%';
+        filled.style.width = width;
+        document.getElementById('ratingInfo').textContent = `Rating: ${rating}/10`;
+      }
+
+      const cameraIcon = document.querySelector('.camera-icon');
+      const videoContainer = document.createElement('div');
+      document.body.appendChild(videoContainer);
+
+      let isCameraRecording = false;
+
+      cameraIcon.addEventListener('click', () => {
+        if (isCameraRecording) {
+          stopCameraRecording();
+        } else {
+          startCameraRecording();
+        }
+        isCameraRecording = !isCameraRecording;
+      });
+
+      function startCameraRecording() {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(stream => {
+            let video = document.createElement('video');
+            video.srcObject = stream;
+            video.play();
+            videoContainer.appendChild(video);
+          })
+          .catch(error => {
+            console.error('Error accessing camera:', error);
+          });
+      }
+
+      function stopCameraRecording() {
+        let video = videoContainer.querySelector('video');
+        let stream = video.srcObject;
+        stream.getTracks().forEach(track => track.stop());
+
+        createVideoPreview(video.srcObject);
+        videoContainer.removeChild(video);
+      }
+
+      function createVideoPreview(blobUrl) {
+        let preview = document.createElement('video');
+        preview.src = blobUrl;
+        preview.controls = true;
+        preview.width = 200;
+        videoContainer.appendChild(preview);
+
+        let deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '&#x1F5D1;'; // Unicode for delete icon
+        deleteButton.addEventListener('click', function () {
+          videoContainer.removeChild(preview);
+          videoContainer.removeChild(deleteButton);
+        });
+        videoContainer.appendChild(deleteButton);
+      }
+
+      const voiceIcon = document.querySelector('.voice-icon');
+      const audioContainer = document.createElement('div');
+      document.body.appendChild(audioContainer);
+
+      let isMicRecording = false;
+      let mediaRecorder;
+
+      voiceIcon.addEventListener('click', () => {
+        if (isMicRecording) {
+          stopMicRecording();
+        } else {
+          startMicRecording();
+        }
+        isMicRecording = !isMicRecording;
+      });
+
+      function startMicRecording() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+
+            mediaRecorder.ondataavailable = (e) => {
+              createAudioPreview(e.data);
+            }
+          })
+          .catch(error => {
+            console.error('Error accessing microphone:', error);
+          });
+      }
+
+      function stopMicRecording() {
+        mediaRecorder.stop();
+      }
+
+      function createAudioPreview(blob) {
+        const audioUrl = URL.createObjectURL(blob);
+        let preview = document.createElement('audio');
+        preview.src = audioUrl;
+        preview.controls = true;
+        audioContainer.appendChild(preview);
+
+        let deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '&#x1F5D1;'; // Unicode for delete icon
+        deleteButton.addEventListener('click', function () {
+          audioContainer.removeChild(preview);
+          audioContainer.removeChild(deleteButton);
+        });
+        audioContainer.appendChild(deleteButton);
+      }
+    });
+  </script>
+</body>
+</html>

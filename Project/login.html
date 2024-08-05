@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login HTML CSS</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"> 
+    <link href="Login.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script type="module" src="login.js" defer></script>
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <form>
+        <h3>Login</h3>
+        <label for="email">Email 
+            <input type="email" id="email" placeholder="Email"> 
+        </label>
+        <label for="password">Password 
+            <input type="password" id="password" placeholder="Password">
+        </label>
+        <button id="submit" type="button">Log in</button>
+
+        <div class="social">
+            <div class="social-btn google">
+                <i class="fab fa-google"></i> Google
+            </div>
+            <div class="social-btn facebook">
+                <i class="fab fa-facebook"></i> Facebook
+            </div>
+        </div>
+
+        <div class="form">
+            <p>Don't have an account? <a href="register.html">Create Account</a></p>
+            <button id="reset" class="white-button">Forget Password?</button>
+        </div>
+    </form>
+</body>
+</html>
