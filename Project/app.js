@@ -1,12 +1,12 @@
 // Initialize Firebase (using your provided configuration)
 const firebaseConfig = {
-    apiKey: "AIzaSyBWSl-N_naw3gMmFudD6yQsiosyRs4UZUM",
+    apiKey: "AFudD6yQsiosyRUM",
     authDomain: "dtm-2dd23.firebaseapp.com",
     databaseURL: "https://dtm-2dd23-default-rtdb.firebaseio.com",
     projectId: "dtm-2dd23",
     storageBucket: "dtm-2dd23.appspot.com",
     messagingSenderId: "1020650368885",
-    appId: "1:1020650368885:web:8edae36514624416372d3c"
+    appId: "1:1020650368885:web:8edae3651462443c"
 };
 
 firebase.initializeApp(firebaseConfig);
