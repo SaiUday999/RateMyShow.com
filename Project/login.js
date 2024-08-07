@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "htt
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBWSl-N_naw3gMmFudD6yQsiosyRs4UZUM",
+    apiKey: "AIyBWSosyRs4UZUM",
     authDomain: "dtm-2dd23.firebaseapp.com",
     projectId: "dtm-2dd23",
     storageBucket: "dtm-2dd23.appspot.com",
